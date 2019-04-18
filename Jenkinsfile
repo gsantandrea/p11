@@ -3,8 +3,8 @@ node {
    stage('Preparation') { // for display purposes
       // Get some code from a GitHub repository
       dir ('jenkinsproject') { 
-        print ">>>"+commitId 
         commitId = sh(returnStdout: true, script: 'git rev-parse HEAD')
+        print ">>>"+commitId 
       }
       git 'https://github.com/jglick/simple-maven-project-with-tests.git'
       mvnHome = tool 'myMaven'

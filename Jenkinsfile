@@ -4,7 +4,7 @@ node {
       // Get some code from a GitHub repository
       dir ('jenkinsproject') { 
          //commitId = sh(returnStdout: true, script: 'git rev-parse HEAD')
-         def scmAction = currentBuild?.actions.find { action -> 
+         def scmAction = currentBuild?.rawBuild.actions.find { action -> 
             action instanceof jenkins.scm.api.SCMRevisionAction
          }
          print ">>>"+ scmAction?.revision?.hash
